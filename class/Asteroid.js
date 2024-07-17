@@ -1,13 +1,16 @@
 export default class Asteroid {
-    constructor(canvasHeight, canvasWidth) {
+    constructor(canvasHeight, canvasWidth, x,y,radius, level, collisionRadius) {
         this.visible = true;
-        this.x =  Math.floor(Math.random() * canvasWidth);
-        this.y =  Math.floor(Math.random() * canvasHeight);
-        this.speed = 1;
-        this.radius = 50;
+        this.x = x || Math.floor(Math.random() * canvasWidth);
+        this.y = y || Math.floor(Math.random() * canvasHeight);
+        this.speed = 3;
+        this.radius = radius || 50;
         this.angle = Math.floor(Math.random() * 359);
         this.strokeColor = "white";
+        this.collisionRadius = collisionRadius || 46;
+        this.level = level || 1;
     }
+
     Update(canvasHeight, canvasWidth) {
         let radians = this.angle / Math.PI * 180;
         this.x += Math.cos(radians) * this.speed;
@@ -42,4 +45,22 @@ export default class Asteroid {
         ctx.closePath();
         ctx.stroke();
     }
+
+    CircleCollisions(p1x, p1y, r1, p2x, p2y, r2, ) {
+        let radiusSum;
+        let xDiff;
+        let yDiff;
+        radiusSum = r1 + r2;
+        xDiff = p1x - p2x;
+        yDiff = p1y - p2y;
+    
+        if(radiusSum > Math.sqrt((xDiff*yDiff)+(xDiff+yDiff))) {
+            return true;
+        } else {
+            return false;
+        }
+    
+    }
+
 }
+

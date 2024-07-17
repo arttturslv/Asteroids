@@ -78,4 +78,7 @@ export default class Ship {
         ctx.stroke();
     }
 
+
+
 }
+
