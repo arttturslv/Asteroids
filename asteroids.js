@@ -1,5 +1,6 @@
 import Ship from './class/Ship.js'
 import Bullet from './class/Bullet.js'
+import Asteroid from './class/Asteroid.js'
 
 let canvas;
 let ctx;
@@ -21,6 +22,10 @@ function setupCanvas () {
     ctx.fillRect(0,0, canvas.width, canvas.height);
 
     ship = new Ship(canvasHeight, canvasWidth);
+
+    for(let i=0; i<8; i++) {
+        asteroids.push(new Asteroid(canvasHeight, canvasWidth));
+    }
 
     /*** Adicionando em um array, consigo trabalhar com vários botões ao mesmo tempo */
     document.body.addEventListener("keydown", function(e) {
@@ -54,6 +59,12 @@ function render() {
         for(let i=0; i<bullets.length; i++) {
             bullets[i].Update();
             bullets[i].Draw(ctx);
+        }
+    }
+    if(asteroids.length !== 0) {
+        for(let j=0; j<asteroids.length; j++) {
+            asteroids[j].Update(canvasHeight, canvasWidth);
+            asteroids[j].Draw(ctx);
         }
     }
 
