@@ -1,4 +1,5 @@
 import Ship from './class/Ship.js'
+import Bullet from './class/Bullet.js'
 
 let canvas;
 let ctx;
@@ -27,6 +28,11 @@ function setupCanvas () {
     });
     document.body.addEventListener("keyup", function(e) {
         keys[e.key] = false;
+        
+        if(e.key == 'c') {
+        bullets.push(new Bullet(ship.angle, ship.noseX, ship.noseY));
+        }
+
     });
 
     render();
@@ -44,8 +50,14 @@ function render() {
     ship.Update(canvasHeight, canvasWidth);
     ship.Draw(ctx);
 
+    if(bullets.length !== 0) {
+        for(let i=0; i<bullets.length; i++) {
+            bullets[i].Update();
+            bullets[i].Draw(ctx);
+        }
+    }
+
     requestAnimationFrame(render);
 }
-
 
 
