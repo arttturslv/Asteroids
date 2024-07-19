@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="module" src="asteroids.js"></script>
+    <script type="module" src="game.js"></script>
+
     <title>Asteroids</title>
 </head>
+
 <body>
     <div id="container">
         <canvas id="my-canvas"></canvas>
+        <div id="menu">
+            <h1>MENU PRINCIPAL</h1>
+            <div>
+                <ul id="list">
+                    <li class="selected">JOGAR</li>
+                    <li>RECORDS</li>
+                    <li>INSTRUÇÕES</li>
+                    <li>EXTRA</li>
+                </ul>
+            </div>
+            <div>
+                <div id="records">
+                    <h2>RECORDS</h2>
+                    <ul>
+                        
+                    </ul>
+                    <button class="goBack-btn">Voltar</button>
+                </div>
+                <div id="instrucoes">
+                    <h2>COMO JOGAR</h2>
+                    <p><span class="bold">Objetivo:</span><br>
+                        Destrua asteroides e evite colisões para ganhar pontos e sobreviver o maior tempo possível.
+                    </p>
+                    <p><span class="bold">Controles:</span><br></p>
+                    <div>
+                        <p> Ir para frente: W ou ↑ <br>
+                            Virar a esquerda: A ou ← <br>
+                            Virar a Direita: D ou → <br>
+                            Atirar: Space Bar ou Enter ↵
+                        </p>
+                    </div>
+                    <button class="goBack-btn">Voltar</button>
+                </div>
+                <div id="extra">
+                    <h2>EXTRA</h2>
+                    <p><span class="bold">CRIADOR:</span><br>
+                        Esse jogo foi desenvolvido pelo Artttur, utilizando como base o tutorial do <a
+                            href="https://www.youtube.com/watch?v=HWuU5ly0taA&list=LL&index=3" class="hyperlink">Derek
+                            Banas</a>.
+                    </p>
+                    <p><a href="https://www.youtube.com/watch?v=HWuU5ly0taA&list=LL&index=3"
+                            class="hyperlink">#github/artttur/asteroids</a><br></p>
+                    <p><a href="https://artttur.com/" class="hyperlink">#artttur.com</a><br></p>
+
+                    <p><span class="bold">VERSÃO </span><span class="small"> 1.2</span></p>
+                    <ul>
+                        <li> - Adicionado menu principal<span class="small"> (1.2)</span></li>
+                        <li> - Invencibilidade ao iniciar<span class="small"> (1.1)</span></li>
+                        <li> - Funcionalidades basicas do jogo<span class="small"> (1.0)</span></li>
+                    </ul>
+                    <button class="goBack-btn">Voltar</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
-</html>
 
+</html>

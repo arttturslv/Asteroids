@@ -17,18 +17,18 @@ export default class Asteroid {
         this.y += Math.sin(radians) * this.speed;
 
         /** Verifica se o asteroid saiu da tela horizontalmente */
-        if(this.x < this.radius) {
-            this.x =  canvasWidth;
+        if(this.x < -this.radius) {
+            this.x = canvasWidth+this.radius;
         }
-        if(this.x > canvasWidth) {
-            this.x =  this.radius;
+        if(this.x > canvasWidth+this.radius) {
+            this.x =  -this.radius;
         }
         /** Verifica se o asteroid saiu da tela verticamente */
-        if(this.y < this.radius) {
-            this.y = canvasHeight;
+        if(this.y < -this.radius) {
+            this.y = canvasHeight+this.radius;
         }
-        if(this.y > canvasHeight) {
-            this.y =  this.radius;
+        if(this.y > canvasHeight+this.radius) {
+            this.y =  -this.radius;
         }
     }
 

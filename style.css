@@ -1,11 +1,129 @@
+@font-face {
+    font-family: PINSCHER;
+    src: url('/assets//fonts/SHPinscher-Regular.otf') ;
+}
+
+* {
+    margin: 0;
+    font-family: PINSCHER;
+}
+
 body {
-    background: #000;
+    background: #6E7C56;
+    width: 100vw - 34;
+    height: 100vh - 34;
+    color: #0d0d0e;
 }
+
 #container {
-    max-width: 1400px;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 #my-canvas {
     background: #000;
-    border: 1px solid #fff;
+    border: 1px solid #0D1B1E;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    width: 80%;
+    border-bottom: 2px solid #0d0d0e;
+}
+h2 {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+li {
+    padding: 0.1rem 2rem ;
+    margin: 0.5rem 0;
+    list-style: none;
+}
+
+.selected {
+    background-color: #17191a;
+    color: rgb(14, 146, 14);
+}
+.bold {
+    font-weight: 600;
+}
+.hyperlink {
+    color: rgb(26, 56, 6);
+}
+.small {
+    font-size:small;
+    font-weight: 600;
+}
+
+button {
+    padding: 0.3rem 0.2rem ;
+    margin: 0.3rem 0;
+    font-size: large;
+    width: 150px;
+    border: rgb(14, 146, 14) solid 3px;
+    background: #17191a;
+    color: rgb(14, 146, 14);
+}
+
+#menu {
+    background: rgb(14, 146, 14);
+    position: absolute;
+    padding: 5px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+    min-width: 400px;
+}
+
+#list {
+    list-style: none;
+    padding: 0;
+    width: 400px;
+}
+
+#records {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#records > ul > li {
+    width: 400px;
+}
+
+#instrucoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    gap: 12px;    
+}
+#instrucoes > p {
+    text-align: left;
+    width: 90%;
+}
+
+#extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    gap: 6px;
+}
+#extra > p {
+    text-align: left;
+    width: 90%;
+}
+#extra > ul {
+    text-align: left;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#extra, #instrucoes, #records {
+    display: none;
 }
