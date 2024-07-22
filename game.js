@@ -49,6 +49,39 @@ function setupCanvas() {
             bullets.push(new Bullet(ship.angle, ship.noseX, ship.noseY));
         }
     });
+
+    const divs = document.querySelectorAll('.joy');
+
+    divs.forEach(el => el.addEventListener('touchstart', event => {
+        console.log(event.target.innerText);
+        var  key = (event.target.innerText).toLowerCase();
+        
+        if(key=='🎯')
+            key=' ';
+
+        if (isGameStarted) {
+            keys[key] = true;
+        } else { //se o jogo não iniciou
+            console.log("ta pegando")
+            navigateThroughMenu(key)
+        }
+
+    }));
+    divs.forEach(el => el.addEventListener('touchend', event => {
+        var key = (event.target.innerText).toLowerCase();
+        
+        if(key=='🎯')
+            key=' ';
+
+        keys[key] = false;
+
+        if (key == ' ') {
+            bullets.push(new Bullet(ship.angle, ship.noseX, ship.noseY));
+        }
+
+    }));
+
+
     render();
 }
 
@@ -65,7 +98,7 @@ function render() {
     ctx.font = '21px Arial';
     ctx.fillText("SCORE: " + score.toString(), 20, 35);
 
-    if (lives < 4) {
+    if (lives <= 0) {
         setEndGame();
     }
     DrawLifeShips(ctx);
@@ -104,6 +137,8 @@ function render() {
         }
     }
 
+
+
     if (ship.visible) {
         ship.Update(canvasHeight, canvasWidth);
         ship.Draw(ctx);
@@ -111,9 +146,19 @@ function render() {
 
     if (bullets.length !== 0) {
         for (let i = 0; i < bullets.length; i++) {
-            bullets[i].Update();
-            bullets[i].Draw(ctx);
-        }
+            if(
+                bullets[i].x > (1.5*canvasWidth) || bullets[i].x < -(canvasWidth*0.5) ||
+                bullets[i].y > (1.5*canvasHeight) || bullets[i].y < -(canvasHeight*0.5)
+
+            ) {
+                console.log('bala saiu da tela');
+                bullets.splice(i, 1);
+            } else {
+                console.log('atualizando')
+                bullets[i].Update();
+                bullets[i].Draw(ctx);
+            }
+        };
     }
 
     if (asteroids.length !== 0) {
@@ -141,6 +186,7 @@ function setEndGame() {
     ship.visible = false;
     asteroids = [];
     bullets = [];
+    lives=0;
 }
 
 function setPlayGame() {
@@ -149,6 +195,7 @@ function setPlayGame() {
     isMainMenuShowing=false;
 
     ship.visible = true;
+    asteroids = [];
     generateAsteroids(8);
     bullets = [];
     lives=5;
@@ -162,7 +209,6 @@ function navigateThroughMenu(key) {
     const opcaoQuatro = document.getElementById("extra");
 
     if(isSecondaryMenuShowing) { //menu secundario ta sendo mostrado, então qualquer tecla, me leva pro primeiro menu
-        console.log('1231')
 
         listaOpcoes.style.display="block";
         opcaoDois.style.display="none";
@@ -171,7 +217,6 @@ function navigateThroughMenu(key) {
         isSecondaryMenuShowing=false;
 
     } else {
-        console.log('asdas')
             /** User clicks up */
             if (key == 'w' || key == "ArrowUp") {
                 listaOpcoes.getElementsByTagName("li")[index].classList.remove("selected");
@@ -241,8 +286,8 @@ function CircleCollisions(p1x, p1y, r1, p2x, p2y, r2) {
 }
 
 function DrawLifeShips(ctx) {
-    let startX = 1350;
-    let startY = 10;
+    let startX = 150;
+    let startY = 50;
     let points = [[9, 9], [-9, 9]];
     ctx.strokeStyle = "white";
     for (let i = 0; i < lives; i++) {

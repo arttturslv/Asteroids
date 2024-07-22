@@ -13,6 +13,8 @@ body {
     width: 100vw - 34;
     height: 100vh - 34;
     color: #0d0d0e;
+    user-select: none;
+
 }
 
 #container {
@@ -76,7 +78,6 @@ button {
     align-items: center;
     flex-direction: column;
     font-size: 1.5rem;
-    min-width: 400px;
 }
 
 #list {
@@ -126,4 +127,52 @@ button {
 
 #extra, #instrucoes, #records {
     display: none;
+}
+
+#controllers {
+    position: absolute;
+    bottom: 10%;
+    display: none;
+    font-size: 1.5rem;
+    color: green;
+    align-items:center ;
+    gap: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+    #controllers {
+        display: flex;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    #extra > ul, #extra, #menu, #instrucoes, #records > ul > li, #list {
+        width: 95%;
+        min-width: none;
+    }
+
+  }
+
+#nav > div {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.joy {
+    padding: 20px;
+    width: 30px;
+    text-align: center;
+    border-radius: 100%;
+    background: #161718;
+    cursor: pointer;
+}
+.joy:active {
+    padding: 20px;
+    width: 30px;
+    text-align: center;
+    border-radius: 100%;
+    background: #2f3131;
+    scale: 0.95;
 }
