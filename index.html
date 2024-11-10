@@ -6,32 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="module" src="game.js"></script>
-
     <title>Asteroids</title>
 </head>
 
 <body>
     <div id="container">
-        <canvas id="my-canvas"></canvas>
+        <canvas id="my-canvas"></canvas>        
         <div id="menu">
             <h1>MENU PRINCIPAL</h1>
-            <div>
-                <ul id="list">
-                    <li class="selected">JOGAR</li>
-                    <li>RECORDS</li>
-                    <li>INSTRUÇÕES</li>
-                    <li>EXTRA</li>
+            <div id="menu-content">
+                <ul id="options-list" class="options">
+                    <li onclick="openOption(0)">PLAY</li>
+                    <li onclick="openOption(1)">RANKING</li>
+                    <li onclick="openOption(2)">INSTRUCTION</li>
+                    <li onclick="openOption(3)">EXTRA</li>
                 </ul>
-            </div>
-            <div>
-                <div id="records">
+                <div id="options-ranking">
                     <h2>RECORDS</h2>
                     <ul>
-
+                        <li>Artur - 1 </li>
                     </ul>
-                    <button class="goBack-btn">Voltar</button>
                 </div>
-                <div id="instrucoes">
+                <div id="options-instruction">
                     <h2>COMO JOGAR</h2>
                     <p><span class="bold">Objetivo:</span><br>
                         Destrua asteroides e evite colisões para ganhar pontos e sobreviver o maior tempo possível.
@@ -44,18 +40,17 @@
                             Atirar: Space Bar ou Enter ↵
                         </p>
                     </div>
-                    <button class="goBack-btn">Voltar</button>
                 </div>
-                <div id="extra">
+                <div id="options-extra">
                     <h2>EXTRA</h2>
                     <p><span class="bold">CRIADOR:</span><br>
-                        Esse jogo foi desenvolvido pelo Artttur, utilizando como base o tutorial do <a
-                            href="https://www.youtube.com/watch?v=HWuU5ly0taA&list=LL&index=3" class="hyperlink">Derek
-                            Banas</a>.
+                        Esse jogo foi desenvolvido pelo Artttur, utilizando como base o tutorial do 
+                        <a href="https://www.youtube.com/watch?v=HWuU5ly0taA&list=LL&index=3" class="hyperlink">
+                            Derek Banas
+                        </a>.
                     </p>
-                    <p><a href="https://www.youtube.com/watch?v=HWuU5ly0taA&list=LL&index=3"
-                            class="hyperlink">#github/artttur/asteroids</a><br></p>
-                    <p><a href="https://artttur.com/" class="hyperlink">#artttur.com</a><br></p>
+                    <p><a target="_blank" href="https://github.com/arttturslv/Asteroids" class="hyperlink">#github/artttur/asteroids</a><br></p>
+                    <p><a target="_blank" href="https://artttur.com/" class="hyperlink">#artttur.com</a><br></p>
 
                     <p><span class="bold">VERSÃO </span><span class="small"> 1.3</span></p>
                     <ul>
@@ -64,35 +59,49 @@
                         <li> - Invencibilidade ao iniciar<span class="small"> (1.1)</span></li>
                         <li> - Funcionalidades basicas do jogo<span class="small"> (1.0)</span></li>
                     </ul>
-                    <button class="goBack-btn">Voltar</button>
                 </div>
+                <button onclick="openOption(10)" id="options-btn-goBack">Voltar</button>
             </div>
         </div>
-        <div id="controllers">
-            <div id="nav">
-                <div>
-                    <div class="joy">
-                        W
-                    </div>
-                </div>
-                <div>
-                    <div class="joy">
-                        A
-                    </div>
-                    <div class="joy">
-                        D
-                    </div>
-                </div>
-
-            </div>
-            <div id="aim">
-                <div class="joy">
-                    🎯
-                </div>
-            </div>
-        </div>
-
     </div>
 </body>
+    <script>
 
+function openOption(option) {
+    const list = document.getElementById("options-list");
+    const ranking = document.getElementById("options-ranking");
+    const instruction = document.getElementById("options-instruction");
+    const extra = document.getElementById("options-extra");
+    const buttonGoBack = document.getElementById("options-btn-goBack");
+
+    switch (option) {
+        case 0:
+            setPlayGame();
+            break;
+        case 1:
+            list.style.display = "none"
+            ranking.style.display = "flex"
+            buttonGoBack.style.display = "flex"
+            break;
+        case 2:
+            list.style.display = "none"
+            instruction.style.display = "flex"
+            buttonGoBack.style.display = "flex"
+            break;
+        case 3:
+            list.style.display = "none"
+            extra.style.display = "flex"
+            buttonGoBack.style.display = "flex"
+            break;
+        default:
+            list.style.display = "block"
+            instruction.style.display = "none"
+            ranking.style.display = "none"
+            extra.style.display = "none"
+            buttonGoBack.style.display = "none"
+            break;
+    }
+}
+
+    </script>
 </html>

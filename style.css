@@ -45,10 +45,7 @@ li {
     list-style: none;
 }
 
-.selected {
-    background-color: #17191a;
-    color: rgb(14, 146, 14);
-}
+
 .bold {
     font-weight: 600;
 }
@@ -67,8 +64,18 @@ button {
     width: 150px;
     border: rgb(14, 146, 14) solid 3px;
     background: #17191a;
-    color: rgb(14, 146, 14);
+    color: rgb(14, 146, 14);    
 }
+
+  
+  @media only screen and (max-width: 500px) {
+    #extra > ul, #extra, #menu, #instrucoes, #records > ul > li, #list {
+        width: 95%;
+        min-width: none;
+    }
+
+  }
+
 
 #menu {
     background: rgb(14, 146, 14);
@@ -80,99 +87,61 @@ button {
     font-size: 1.5rem;
 }
 
-#list {
+.options {
     list-style: none;
     padding: 0;
     width: 400px;
 }
+.options > li:hover {
+    background-color: #17191a;
+    color: rgb(14, 146, 14);
+}
 
-#records {
+#options-ranking {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#records > ul > li {
+#options-ranking > ul > li {
     width: 400px;
 }
 
-#instrucoes {
+#options-instruction {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 400px;
     gap: 12px;    
 }
-#instrucoes > p {
+#options-instruction > p {
     text-align: left;
     width: 90%;
 }
 
-#extra {
+#options-extra {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 400px;
     gap: 6px;
 }
-#extra > p {
+#options-extra > p {
     text-align: left;
     width: 90%;
 }
-#extra > ul {
+#options-extra > ul {
     text-align: left;
     width: 400px;
     margin: 0;
     padding: 0;
 }
 
-#extra, #instrucoes, #records {
+#options-extra, #options-instruction, #options-ranking {
     display: none;
 }
 
-#controllers {
-    position: absolute;
-    bottom: 10%;
+#options-btn-goBack {
     display: none;
-    font-size: 1.5rem;
-    color: green;
-    align-items:center ;
-    gap: 50px;
-}
-
-@media only screen and (max-width: 700px) {
-    #controllers {
-        display: flex;
-    }
-  }
-  
-  @media only screen and (max-width: 500px) {
-    #extra > ul, #extra, #menu, #instrucoes, #records > ul > li, #list {
-        width: 95%;
-        min-width: none;
-    }
-
-  }
-
-#nav > div {
-    display: flex;
-    justify-items: center;
+    place-self: center;
     justify-content: center;
-    gap: 40px;
-}
-
-.joy {
-    padding: 20px;
-    width: 30px;
-    text-align: center;
-    border-radius: 100%;
-    background: #161718;
-    cursor: pointer;
-}
-.joy:active {
-    padding: 20px;
-    width: 30px;
-    text-align: center;
-    border-radius: 100%;
-    background: #2f3131;
-    scale: 0.95;
 }
